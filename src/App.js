@@ -3,6 +3,7 @@ import './App.css';
 //import Welcome from './components/Welcome';
 import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import Contact from './pages/Contatc';
+import Profile from './pages/Profile';
 
 
 function App() {
@@ -19,10 +20,14 @@ function App() {
               <li>
                 <Link to="/contact"> Contact </Link>
               </li>
+              <li>
+                <Link to="/profile"> Profile </Link>
+              </li>
             </ul>
           </div>
           <Routes>
             <Route path="/contact" element={<Contact/>} />
+            <Route path="/profile/:name" element={<Profile/>}/>
           </Routes>
         </Router>
       </header>
