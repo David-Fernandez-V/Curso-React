@@ -1,35 +1,17 @@
-import logo from './logo.svg';
+import portada from "./img/rick-morty.png"
 import './App.css';
-//import Welcome from './components/Welcome';
-import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-import Contact from './pages/Contatc';
-import Profile from './pages/Profile';
-
 
 function App() {
+  const repApi = () =>{
+    console.log("Hola")
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Router>
-          <div>
-            <ul>
-              <li>
-                <Link to="/"> Home </Link>
-              </li>
-              <li>
-                <Link to="/contact"> Contact </Link>
-              </li>
-              <li>
-                <Link to="/profile"> Profile </Link>
-              </li>
-            </ul>
-          </div>
-          <Routes>
-            <Route path="/contact" element={<Contact/>} />
-            <Route path="/profile/:name" element={<Profile/>}/>
-          </Routes>
-        </Router>
+       <h1 className="title">Rick & Morty</h1>
+       <img src={portada} alt="Rick & Morty" className='img-home'/>
+       <button onClick={repApi} className="btn-search"> Buscar personaje </button>
       </header>
     </div>
   );
