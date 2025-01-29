@@ -1,17 +1,29 @@
 import portada from "./img/rick-morty.png"
 import './App.css';
+import { useState } from "react";
+import Characters from "./components/Characters";
 
 function App() {
-  const repApi = () =>{
-    console.log("Hola")
+  const [characters, setCharacters] = useState(null);
+
+  const repApi = async () =>{
+    const api = await fetch("https://rickandmortyapi.com/api/character")
+    const characterApi = await api.json();
+    setCharacters(characterApi.results);
   };
 
   return (
     <div className="App">
       <header className="App-header">
        <h1 className="title">Rick & Morty</h1>
-       <img src={portada} alt="Rick & Morty" className='img-home'/>
-       <button onClick={repApi} className="btn-search"> Buscar personaje </button>
+       {characters ? (
+        <Characters characters={characters} setCharacters={setCharacters}/>        
+       ) : (
+       <>
+        <img src={portada} alt="Rick & Morty" className='img-home'/>
+        <button onClick={repApi} className="btn-search"> Buscar personaje </button>
+      </>
+      )}
       </header>
     </div>
   );
